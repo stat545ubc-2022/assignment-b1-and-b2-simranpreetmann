@@ -1,0 +1,82 @@
+---
+title: "Assignment B1"
+output: html_document
+date: "2022-11-03"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(datateachr)
+library(tidyverse)
+library(testthat)
+```
+
+# Exercise 1 & 2: Creating and Documenting the Function -----------------------------------------
+```{r}
+#' Optimal Histogram
+#'
+#' Creates a histogram with the optimal bin-width, as defined by the Freedman-Diaconis rule. A wrapper for \code{geom_histogram()}.
+#'
+#' @param x A vector of class "numeric". This parameter is named \code{x} because it represents the numerical variable that will be plotted on this histogram.
+#' @param axis An object of class "character", indicating the x-axis label. This parameter is named \code{axis} because its input is used create the label of the x-axis of the histogram.
+#' @param color An object of class "character", indicating the color of the bars. See the list of colors available in R <http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf>. This parameter is named \code{color} because its input is used to decide the color of the bars making up the histogram.
+#' @param ... Other parameters to pass to \code{geom_histogram()}
+#'
+#' @return A histogram plot that visualizes the distribution of \code{x}
+#' @export
+optimal_histogram <- function(x, axis, color, ...) {
+  if (length(x) == 0) {
+    warning("length of x must be greater than 0")
+    return(x)
+  }
+  stopifnot(is.numeric(x))
+  stopifnot(is.character(axis))
+  stopifnot(is.character(color))
+  optimal_bin_width <- ((IQR(x)) * 2) / (length(x)^(1 / 3))
+  ggplot(mapping = aes(x)) +
+    geom_histogram(binwidth = optimal_bin_width, color = color, fill = color, na.rm = TRUE, ...) +
+    labs(x = axis, y = "Count") +
+    theme_linedraw()
+}
+```
+
+# Exercise 3: Examples --------------------------------------------------------------------------
+```{r}
+optimal_histogram(vancouver_trees$diameter, "Diameter", "steelblue1")
+```
+
+# Exercise 4: Test the Function ------------------------------------------------------------
+```{r}
+test_that("Function returns a ggplot object", {
+  expect_s3_class(optimal_histogram(c(2, 3, 3, 3, 4, 4, 2, 2, 5, 5, 5, 5, 3), "Numbers", "steelblue1"), "ggplot")
+  expect_s3_class(optimal_histogram(vancouver_trees$height_range_id, "Height Range ID", "cyan1"), "ggplot")
+  expect_s3_class(optimal_histogram(cancer_sample$radius_mean, "Radius", "steelblue1"), "ggplot")
+})
+
+test_that("Function returns error if non-numeric input passed to x", {
+  expect_error(optimal_histogram(c(2, 3, 3, 3, 4, 4, 2, 2, 5, 5, "B", "C", 5, 5, 3), "Random Numbers and Letters", "brown1"))
+  expect_error(optimal_histogram(vancouver_trees$genus_name, "Genus Name", "cyan1"))
+  expect_error(optimal_histogram(vancouver_trees$plant_area, "Plant Area", "cyan1"))
+})
+
+test_that("Function returns warning message if vector of length zero passed to x", {
+  expect_warning(optimal_histogram(c(), "No Numbers", "brown2"), "length of x must be greater than 0")
+})
+
+test_that("Function returns error if argument passed to axis is not of type character", {
+  expect_error(optimal_histogram(c(2, 3, 3, 3, 4, 4, 2, 2, 5, 5, 5, 5, 3), Numbers, "steelblue1"))
+  expect_error(optimal_histogram(c(2, 3, 3, 3, 4, 4, 2, 2, 5, 5, 5, 5, 3), 3, "steelblue1"))
+  expect_error(optimal_histogram(c(2, 3, 3, 3, 4, 4, 2, 2, 5, 5, 5, 5, 3), 3.4, "steelblue1"))
+})
+
+test_that("Function returns error if argument passed to color is not of type character", {
+  expect_error(optimal_histogram(c(2, 3, 3, 3, 4, 4, 2, 2, 5, 5, 5, 5, 3), "Numbers", steelblue1))
+  expect_error(optimal_histogram(c(2, 3, 3, 3, 4, 4, 2, 2, 5, 5, 5, 5, 3), "Numbers", 4))
+  expect_error(optimal_histogram(c(2, 3, 3, 3, 4, 4, 2, 2, 5, 5, 5, 5, 3), "Numbers", 4.5))
+})
+```
+
+
