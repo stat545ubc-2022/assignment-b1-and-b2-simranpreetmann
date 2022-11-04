@@ -1,8 +1,8 @@
 # Brief Discription 
 ### What is this project?
 This is Assignment B for STAT 545B. This assignment consists of two parts:
-  - [Assignment B1] (https://stat545.stat.ubc.ca/assignments/assignment-b1/)
-  - [Assignment B2] (https://stat545.stat.ubc.ca/assignments/assignment-b2/)
+  - [Assignment B1](https://stat545.stat.ubc.ca/assignments/assignment-b1/)
+  - [Assignment B2](https://stat545.stat.ubc.ca/assignments/assignment-b2/)
 
 Assignment B1 covers making a function, while assignment B2 assesses the student's ability to make an R package.
   
