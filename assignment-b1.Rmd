@@ -27,10 +27,11 @@ The code chunk below is used to create the function, named optimal_histogram(), 
 #' @param ... Other parameters to pass to geom_histogram()
 #'
 #' @return A histogram plot that visualizes the distribution of x
-#' @examples
-#' optimal_histogram(cancer_sample$area_mean, "Mean Area of Biopsy Sample")
-#' optimal_histogram(cancer_sample$radius_mean, "Mean Radius of Biopsy Sample", fill = "darkgoldenrod4", color = "darkgoldenrod3", alpha = 0.5)
 #' @export
+#' 
+#' @examples
+#' optimal_histogram(c(2, 3, 3, 3, 4, 4, 2, 2, 5, 5, 5, 5, 3), "Numbers")
+#' optimal_histogram(c(2, 3, 3, 3, 5, 4, 2, 3, 2, 5, 4, 5, 1), "Mean Neutrophil Counts", fill = "darkgoldenrod4", color = "darkgoldenrod3", alpha = 0.5)
 optimal_histogram <- function(x, axis, ...) {
   if (length(x) == 0) {
     warning("length of *x* must be greater than 0!")

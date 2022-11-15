@@ -20,9 +20,9 @@ optimal_histogram <- function(x, axis, ...) {
   stopifnot(is.na(x) | is.numeric(x) | is.integer(x))
   stopifnot(is.character(axis))
   
-  x <- na.omit(x)
+  x <- stats::na.omit(x)
   
-  optimal_bin_width <- ((IQR(x)) * 2) / (length(x)^(1 / 3))
+  optimal_bin_width <- ((stats::IQR(x)) * 2) / (length(x)^(1 / 3))
   ggplot2::ggplot(mapping = ggplot2::aes(x)) +
     ggplot2::geom_histogram(binwidth = optimal_bin_width, ...) +
     ggplot2::labs(x = axis) +
