@@ -8,7 +8,7 @@ Assignment B1 covers making a function, while assignment B2 assesses the student
   
 ### What is in this repopsitory?
 This repository contains the following files:
-- [README.md](https://github.com/stat545ubc-2022/assignment-b1-and-b2-simranpreetmann/blob/main/README.md) - Brief discription of this project and repository
+- [README.md](https://github.com/stat545ubc-2022/assignment-b1-and-b2-simranpreetmann/blob/main/README.md) - Brief description of this project and repository
 - [assignment-b1.Rmd](https://github.com/stat545ubc-2022/assignment-b1-and-b2-simranpreetmann/blob/main/assignment-b1.Rmd) - R markdown file with R code for the function created as part of assignment B1
 - [assignment-b1.md](https://github.com/stat545ubc-2022/assignment-b1-and-b2-simranpreetmann/blob/main/assignment-b1.md) - Rendered markdown document for assignment B1
 - [assignment-b1_files/figures-gfm](https://github.com/stat545ubc-2022/assignment-b1-and-b2-simranpreetmann/tree/main/assignment-b1_files/figure-gfm) - Contains the figures for assignment B1
