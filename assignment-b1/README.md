@@ -3,6 +3,7 @@
 This is the folder for Assignment B1 for STAT 545B. This assignment consists of two parts:
   - [Assignment B1](https://stat545.stat.ubc.ca/assignments/assignment-b1/)
   - [Assignment B2](https://stat545.stat.ubc.ca/assignments/assignment-b2/)
+
 Assignment B1 covers making a function, while assignment B2 assesses the student's ability to make an R package. The files for Assignment B1 are in this folder, while the files for Assignment B2 are in the main folder of this repository.
   
 ### What specific files are in this folder?
