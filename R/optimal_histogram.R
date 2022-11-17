@@ -8,7 +8,7 @@
 #'
 #' @return A histogram plot that visualizes the distribution of x
 #' @export
-#' 
+#'
 #' @examples
 #' optimal_histogram(c(2, 3, 3, 3, 4, 4, 2, 2, 5, 5, 5, 5, 3), "Numbers")
 #' optimal_histogram(c(2, 3, 3, 3, 5, 4, 2, 3, 2, 5, 4, 5, 1), "Mean Neutrophil Counts", fill = "darkgoldenrod4", color = "darkgoldenrod3", alpha = 0.5)
@@ -19,9 +19,9 @@ optimal_histogram <- function(x, axis, ...) {
   }
   stopifnot(is.na(x) | is.numeric(x) | is.integer(x))
   stopifnot(is.character(axis))
-  
+
   x <- stats::na.omit(x)
-  
+
   optimal_bin_width <- ((stats::IQR(x)) * 2) / (length(x)^(1 / 3))
   ggplot2::ggplot(mapping = ggplot2::aes(x)) +
     ggplot2::geom_histogram(binwidth = optimal_bin_width, ...) +
