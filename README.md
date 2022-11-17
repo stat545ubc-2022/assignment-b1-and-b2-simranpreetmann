@@ -36,9 +36,9 @@ of numerical data. In R, `ggplot2::ggplot()` and
 `ggplot2::geom_histogram()` are commonly used to create histograms.
 
 ``` r
-x <- c(1,1,1,1,1,3,2,4,6,5,2,3,1,6,5,3,6,3,3,2,5,4,6,2,3,4,5,6,8,9,5,5,6,7,2,3,6,5,4,3)
+x <- c(1, 1, 1, 1, 1, 3, 2, 4, 6, 5, 2, 3, 1, 6, 5, 3, 6, 3, 3, 2, 5, 4, 6, 2, 3, 4, 5, 6, 8, 9, 5, 5, 6, 7, 2, 3, 6, 5, 4, 3)
 ggplot2::ggplot(mapping = ggplot2::aes(x)) +
-    ggplot2::geom_histogram()
+  ggplot2::geom_histogram()
 #> `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
